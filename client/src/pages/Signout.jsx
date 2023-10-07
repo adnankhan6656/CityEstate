@@ -23,7 +23,7 @@ export default function Signout() {
         },
         body: JSON.stringify(formdata),
       });
-      const data=res.json();
+      const data=await res.json();
       if (data.success === false) {
         setLoading(false);
         setError(data.message);
@@ -59,7 +59,10 @@ export default function Signout() {
     </form>
     <div className="flex my-7">
       <p>Have an Account? </p>
+      <Link to="/sign-in">
       <span className="ml-1 text-[#3B82F6] cursor-pointer">Sign in</span>
+      </Link>
+        
     </div>
     {error && <p className='text-red-500 mt-5'>{error}</p>}
    </div>
