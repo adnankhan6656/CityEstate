@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoute from "./routes/userRoute.js";
 import authRouter from './routes/auth.route.js';
+import listingRouter from "./routes/listing.route.js";
 import cookieParser from 'cookie-parser';
 dotenv.config();
 async function connectToMongoDB() {
@@ -26,6 +27,8 @@ app.listen(3000, () => {
 )
 app.use('/api/user',userRoute);
 app.use('/api/auth', authRouter);
+app.use('/api/listing',listingRouter);
+
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
