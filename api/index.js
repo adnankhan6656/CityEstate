@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoute from "./routes/userRoute.js";
 import authRouter from './routes/auth.route.js';
+import cookieParser from 'cookie-parser';
 dotenv.config();
 async function connectToMongoDB() {
     try {
@@ -16,6 +17,7 @@ async function connectToMongoDB() {
 connectToMongoDB();
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 
 app.listen(3000, () => {
