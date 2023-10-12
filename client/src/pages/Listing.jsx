@@ -133,7 +133,7 @@ export default function Listing() {
 
              </div>
              <div className="max-w-6xl mx-auto my-4">
-             {currentUser &&  !contact && (
+             {currentUser && listing.userRef !== currentUser._id &&  !contact && (
               <button onClick={()=>setContact(true)} className='bg-[#4a60a1] text-white rounded-lg uppercase hover:opacity-95 p-3 max-w-6xl mx-auto '>
                 Contact landlord
               </button>
