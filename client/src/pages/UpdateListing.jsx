@@ -163,7 +163,7 @@ export default function CreateListing() {
   return (
     <main className='p-3 max-w-5xl mx-auto shadow-md my-4'>
       <h1 className='text-3xl font-semibold text-center my-7'>
-        Create a Listing
+        Update a Listing
       </h1>
       <p className="text-sm my-5 text-[gray]">
         These fields are mandatory: Title, Description,Images, Property Address
@@ -351,7 +351,7 @@ export default function CreateListing() {
                 </button>
               </div>
             ))}
-        <button disabled={loading || uploading} className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Creating...' : 'Create listing'}</button>
+        <button disabled={loading || uploading} className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Update' : 'Update listing'}</button>
         {error && <p className='text-red-700 text-sm'>{error}</p>}
         </div>
       </form>

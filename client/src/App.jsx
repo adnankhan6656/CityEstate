@@ -9,6 +9,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import CreateListing from './pages/CreateListing.jsx';
 import UpdateListing from './pages/UpdateListing.jsx';
+import Listing from './pages/Listing.jsx';
 export default function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ export default function App() {
      <Route element={<PrivateRoute/>}>
      <Route path='/profile' element={<Profile />} />
      <Route path='/create-listing' element={<CreateListing />} />
+     <Route path='/listing/:listingId' element={<Listing />} />
      <Route
             path='/update-listing/:listingId'
             element={<UpdateListing />}
