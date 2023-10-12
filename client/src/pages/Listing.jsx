@@ -15,6 +15,8 @@ import {
   FaParking,
   FaShare,
 } from 'react-icons/fa';
+import Contact from '../components/Contact';
+import { useSelector } from 'react-redux';
 
 
 
@@ -24,7 +26,9 @@ export default function Listing() {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true); // set loading to true initially
   const [error, setError] = useState(false);
+  const [contact, setContact] = useState(false); 
   const params = useParams();
+  const {currentUser} = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -128,8 +132,13 @@ export default function Listing() {
               </p>
 
              </div>
-             <div className="max-w-full mx-auto my-4">
-              <button className='bg-[#4a60a1] p-3 max-w-full text-white cursor-pointer rounded-lg    mx-auto'>Send Message</button>
+             <div className="max-w-6xl mx-auto my-4">
+             {currentUser &&  !contact && (
+              <button onClick={()=>setContact(true)} className='bg-[#4a60a1] text-white rounded-lg uppercase hover:opacity-95 p-3 max-w-6xl mx-auto '>
+                Contact landlord
+              </button>
+            )}
+            {contact && <Contact listing={listing}/>}
              </div>
           </div>
         </div>
