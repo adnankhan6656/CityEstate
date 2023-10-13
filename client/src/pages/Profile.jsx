@@ -160,7 +160,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-3 " >
+    <div className="max-w-lg mx-auto p-3  mt-12" >
      <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
      <form  onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input  onChange={(e) => setFile(e.target.files[0])} type="file" ref={fileRef} accept='image/*'  hidden/>
@@ -184,7 +184,7 @@ export default function Profile() {
         <button  disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'>
         {loading ? 'Loading...' : 'Update'}
         </button>
-        <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' to={"/create-listing"}>
+        <Link className='bg-[#4a60a1] text-white p-3 rounded-lg uppercase text-center hover:opacity-95' to={"/create-listing"}>
           Create Listing
         </Link>
      </form>

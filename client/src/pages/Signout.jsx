@@ -45,7 +45,7 @@ export default function Signout() {
 
   }
   return (
-   <div className=" max-w-lg p-3 mx-auto">
+   <div className=" max-w-lg p-3 mx-auto mt-16">
     <h1 className="text-3xl text-center font-semibold my-7">
       Sign Up
     </h1>
