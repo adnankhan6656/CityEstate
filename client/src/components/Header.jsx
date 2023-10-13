@@ -24,7 +24,7 @@ export default function Header() {
     }
   }, [location.search]);
   return (
-    <header className="shadow-md fixed top-0 w-full bg-white">
+    <header className="shadow-md fixed top-0 w-full bg-white z-50">
       <div className="flex justify-between items-center max-w-6xl p-3 mx-auto">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
