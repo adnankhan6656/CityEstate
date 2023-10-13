@@ -24,7 +24,7 @@ export default function Header() {
     }
   }, [location.search]);
   return (
-    <header className="bg-slate-[#ffffff] shadow-md">
+    <header className="shadow-md fixed top-0 w-full bg-white">
       <div className="flex justify-between items-center max-w-6xl p-3 mx-auto">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
@@ -35,6 +35,7 @@ export default function Header() {
         <form onSubmit={handleSubmit} className="flex items-center bg-slate-100 p-3 rounded-lg ">
           <input type="text" placeholder='Search....' className="bg-transparent w-24 sm:w-64 focus:outline-none" value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)} />
+            
             <button>
           <FaSearch className='cursor-pointer'/>
             </button>
