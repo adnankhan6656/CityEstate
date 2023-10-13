@@ -10,6 +10,8 @@ import ListingItem from '../components/ListingItem';
 
 export default function Search() {
     const [isVisible, setIsVisible] = useState(false);
+    const [showMore, setShowMore] = useState(false);
+    
     const navigate = useNavigate();
     const [sidebardata, setSidebardata] = useState({
       searchTerm: '',
@@ -52,9 +54,15 @@ export default function Search() {
   
       const fetchListings = async () => {
         setLoading(true);
+        setShowMore(false);
         const searchQuery = urlParams.toString();
         const res = await fetch(`/api/listing/get?${searchQuery}`);
         const data = await res.json();
+        if (data.length > 8) {
+          setShowMore(true);
+        } else {
+          setShowMore(false);
+        }
         setListings(data);
         setLoading(false);
       };
@@ -110,6 +118,7 @@ export default function Search() {
       urlParams.set('order', sidebardata.order);
       const searchQuery = urlParams.toString();
       navigate(`/search?${searchQuery}`);
+      setIsVisible(false);
     };
     const [loading, setLoading] = useState(false);
     const [listings, setListings] = useState([]);
@@ -119,12 +128,25 @@ export default function Search() {
       setIsVisible(!isVisible); // Toggle the visibility state
     };
   
+    const onShowMoreClick = async () => {
+      const numberOfListings = listings.length;
+      const startIndex = numberOfListings;
+      const urlParams = new URLSearchParams(location.search);
+      urlParams.set('startIndex', startIndex);
+      const searchQuery = urlParams.toString();
+      const res = await fetch(`/api/listing/get?${searchQuery}`);
+      const data = await res.json();
+      if (data.length < 9) {
+        setShowMore(false);
+      }
+      setListings([...listings, ...data]);
+    };
 
   return (
     <main>
         {/* For Sidebar */}
         {isVisible && (
-            <div className="fixed top-0 left-0  z-50 w-full md:h-full md:w-1/4 left-0 p-6 shadow-3xl  bg-white  transition ease-in-out  z-100 flex flex-col gap-5">
+            <div className="fixed top-0 left-0  z-50 max-w-full sm-custom:h-full left-0 p-6 shadow-3xl  bg-white  transition ease-in-out  z-100 flex flex-col gap-5">
                 <AiOutlineClose size={"24px"} onClick={handleSidebar} className=" position absolute top-2 mr-3 right-0 cursor-pointer "/>
             <div className=" flex items-center space-x-1 mt-6">
               <p className="text-md font-semibold">Search:</p>
@@ -232,7 +254,18 @@ export default function Search() {
               <ListingItem key={listing._id} listing={listing} />
               ))}
               </div>
+
+              {showMore && (
+            <button
+              onClick={onShowMoreClick}
+              className='bg-[#4a60a1] mt-3 mb-10 hover:underline p-2 px-4 text-white  text-center rounded-lg'
+            >
+              Show more
+            </button>
+          )}
   </div>
+
+  
 
       </div>
     </main>

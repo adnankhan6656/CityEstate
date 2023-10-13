@@ -10,7 +10,8 @@ export default {
         '3xl': ' rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;',
       },
       screens: {
-        'md-custom': '725px', // Define your custom media query here
+        'md-custom': '725px',
+        'sm-custom':'408px' // Define your custom media query here
       },
     },
   },
