@@ -74,17 +74,29 @@ export default function Listing() {
             ))}
           </Swiper>
           <div className="flex flex-col p-4 gap-2 max-w-6xl mx-auto my-3">
+       <div className="flex gap-3">
+
           <p className='bg-[#4a60a1] w-full max-w-[100px] text-white text-center p-1 rounded-md'>
                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
               </p>
+              {listing.offer && (
+                <p className='bg-[#4a60a1]  w-full max-w-[130px] text-white text-center p-1 rounded-md'>
+                  ${+listing.regularPrice - +listing.discountPrice} OFF
+                </p>
+              )}
+              </div>
             
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
             <p className="text-3xl font-semibold">
               {listing.name}
             </p>
-            <p className="text-[#4A60A1] text-3xl font-semibold">
-            $ {listing.regularPrice}
-            </p>
+
+            <p className='text-[#4a60a1]'>${' '}
+            {listing.offer
+                ? listing.discountPrice.toLocaleString('en-US')
+                : listing.regularPrice.toLocaleString('en-US')}
+              {listing.type === 'rent' && ' / month'}
+                </p>
             </div>
             
 
